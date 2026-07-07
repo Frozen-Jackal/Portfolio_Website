@@ -1,4 +1,5 @@
 "use client";
+
 import Options from "@/components/AiTools/Options";
 import PreviewGeneratedText from "@/components/AiTools/PreviewGeneratedText";
 import Breadcrumb from "@/components/Breadcrumb";

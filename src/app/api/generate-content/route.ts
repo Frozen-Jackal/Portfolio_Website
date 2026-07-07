@@ -5,8 +5,17 @@ export async function POST(req: Request) {
 
   const { prompt, apiKey } = body;
 
+  const key = apiKey || process.env.OPENAI_API_KEY;
+
+  if (!key) {
+    return new Response(
+      JSON.stringify({ error: "API key is required" }),
+      { status: 400 }
+    );
+  }
+
   const openai = new OpenAI({
-    apiKey: apiKey ? apiKey : process.env.OPENAI_API_KEY,
+    apiKey: key,
   });
 
   try {
@@ -23,6 +32,6 @@ export async function POST(req: Request) {
 
     return new Response(JSON.stringify(generatedContent));
   } catch (error: any) {
-    return new Response(JSON.stringify(error.error.message), { status: 500 });
+    return new Response(JSON.stringify(error.error?.message || "Error generating content"), { status: 500 });
   }
 }

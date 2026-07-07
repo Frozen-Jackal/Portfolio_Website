@@ -1,9 +1,13 @@
 "use client";
 
-import { NextStudio } from "next-sanity/studio";
-import config from "../../../../../sanity.config";
-
 export default function AdminPage() {
-  return <NextStudio config={config} />;
-  // return <>this sanity studio page</>;
+  return (
+    <div style={{ padding: "2rem", textAlign: "center" }}>
+      <h1>Studio Admin</h1>
+      <p>
+        Sanity CMS has been removed from this project. This page is no longer
+        available.
+      </p>
+    </div>
+  );
 }
